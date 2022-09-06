@@ -17,10 +17,13 @@ function onInput() {
 
 function onSubmit(e) {
   e.preventDefault();
-
-  console.log(JSON.parse(localStorage.getItem(STORAGE_KEY)));
-  e.currentTarget.reset();
-  localStorage.removeItem(STORAGE_KEY);
+  if (e.target.email.value && e.target.message.value !== '') {
+    console.log(JSON.parse(localStorage.getItem(STORAGE_KEY)));
+    e.currentTarget.reset();
+    localStorage.removeItem(STORAGE_KEY);
+  } else {
+    alert('Все поля должны быть заполнены');
+  }
 }
 const resp = JSON.parse(localStorage.getItem(STORAGE_KEY));
 if (resp) {
